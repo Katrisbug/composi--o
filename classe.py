@@ -27,32 +27,32 @@ class MemoriaRAM:
         return f"Memória RAM: {self.__capacidade_gb} GB, Tipo: {self.__tipo}"
 
 class Armazenamento:
-    def __init__(self, tipo:str, capacidade_gb):
-        self.__tipo = tipo
-        self.__capacidade_gb = capacidade_gb
+    def __init__(self, tipoSSD_HDD, acapacidade_gb):
+        self.__tipoSSD_HDD = tipoSSD_HDD
+        self.__acapacidade_gb = acapacidade_gb
 
     def getTipo(self):
-        return self.__tipo
+        return self.__tipoSSD_HDD
     
-    def getCapacidade_gb(self):
-        return self.__capacidade_gb
+    def getAcapacidade_gb(self):
+        return self.__acapacidade_gb
     
     def __str__(self):
-        return f"Armazenamento: {self.__tipo}, {self.__capacidade_gb} GB"
+        return f"Armazenamento: {self.__tipoSSD_HDD}, {self.__acapacidade_gb} GB"
     
 class Computador:
-    def __init__ (self, marca:str, modelo:str):
+    def __init__ (self, marca, modelo, modeloc, velocidade_ghz, capacidade_gb, tipo, tipoSSD_HDD, acapacidade_gb):
         self.__marca = marca
-        self.__modelo = modelo
-        self.__memoria_ram = MemoriaRAM()
-        self.__processador = Processador()
-        self.__armazenamento = Armazenamento()
+        self.__modeloc = modeloc
+        self.__memoria_ram = MemoriaRAM(capacidade_gb, tipo)
+        self.__processador = Processador(modelo, velocidade_ghz)
+        self.__armazenamento = Armazenamento(tipoSSD_HDD, acapacidade_gb)
 
     def getMarca(self):
         return self.__marca
 
-    def getModelo(self):
-        return self.__modelo
+    def getModeloc(self):
+        return self.__modeloc
 
     def getProcessador(self):
         return self.__processador
@@ -64,20 +64,17 @@ class Computador:
         return self.__armazenamento
     
     def ligar(self):
-        (f"\n Ligando o computador {self.getMarca()} {self.getModelo()}...")
-        (f" {self.getProcessador()}")
-        (f" {self.getMemoria_ram()}")
-        (f" {self.getArmazenamento()}")
+        print(f"\n Ligando o computador {self.getMarca()} {self.getModeloc()}...")
+        print(f" {self.getProcessador()}")
+        print(f" {self.getMemoria_ram()}")
+        print(f" {self.getArmazenamento()}")
         return self
     
     def __str__(self):
-        return (f"Computador: {self.__marca} {self.__modelo}\n"
+        return (f"Computador: {self.__marca} {self.__modeloc}\n"
                 f"{self.__processador}\n"
                 f"{self.__memoria_ram}\n"
                 f"{self.__armazenamento}")
 
     def __del__(self):
-        (f"\n O computador {self.__marca} {self.__modelo} foi destruído. Seus componentes não existem mais.")
-        self.__processador = None
-        self.__memoria_ram = None
-        self.__armazenamento = None
+        print(f"[DESMONTANDO] Computador {self.__marca} foi desmontado")
