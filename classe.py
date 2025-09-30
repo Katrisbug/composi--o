@@ -62,3 +62,22 @@ class Computador:
 
     def getArmazenamento(self):
         return self.__armazenamento
+    
+    def ligar(self):
+        (f"\n Ligando o computador {self.getMarca()} {self.getModelo()}...")
+        (f" {self.getProcessador()}")
+        (f" {self.getMemoria_ram()}")
+        (f" {self.getArmazenamento()}")
+        return self
+    
+    def __str__(self):
+        return (f"Computador: {self.__marca} {self.__modelo}\n"
+                f"{self.__processador}\n"
+                f"{self.__memoria_ram}\n"
+                f"{self.__armazenamento}")
+
+    def __del__(self):
+        (f"\n O computador {self.__marca} {self.__modelo} foi destruído. Seus componentes não existem mais.")
+        self.__processador = None
+        self.__memoria_ram = None
+        self.__armazenamento = None
