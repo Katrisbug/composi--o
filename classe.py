@@ -8,6 +8,18 @@ class Processador:
     
     def getVelocidade_ghz(self):
         return self.__velocidade_ghz
+    
+class MemoriaRAM:
+    def __init__(self, capacidade_gb:float, tipo:str):
+        self.__capacidade_gb = capacidade_gb
+        self.__tipo = tipo
+
+    def getCapacidade_gb(self):
+        return self.__capacidade_gb
+    
+    def getTipo(self):
+        return self.__tipo
+
 
 class Computador:
     def __init__ (self, marca:str, modelo:str):
