@@ -20,7 +20,17 @@ class MemoriaRAM:
     def getTipo(self):
         return self.__tipo
 
+class Armazenamento:
+    def __init__(self, tipo:str, capacidade_gb):
+        self.__tipo = tipo
+        self.__capacidade_gb = capacidade_gb
 
+    def getTipo(self):
+        return self.__tipo
+    
+    def getCapacidade_gb(self):
+        return self.__capacidade_gb
+    
 class Computador:
     def __init__ (self, marca:str, modelo:str):
         self.__marca = marca
